@@ -11,19 +11,7 @@
                 登陆
             </div>
             <div class="float" v-if="isLogined">欢迎:{{ username }}</div>
-            <div class="check float">
-                <input
-                    type="checkbox"
-                    id="checkbox"
-                    class="hidden"
-                    @click="font_toggle"
-                />
-                <label for="checkbox">
-                    <Icon :color="fontButtonColor">
-                        <TextFont20Filled />
-                    </Icon>
-                </label>
-            </div>
+            <TitleBar @font_click="font_toggle"></TitleBar>
         </div>
 
         <div id="info" v-show="!loading">
@@ -52,8 +40,7 @@
 </template>
 <script>
 import { parse_uid, get_poetry } from "../libs/poetry";
-import { TextFont20Filled } from "@vicons/fluent";
-import { Icon } from "@vicons/utils";
+import TitleBar from "./TitleBar.vue";
 // ================= functions ===================
 async function set_data(uid, app) {
     let extra_info = parse_uid(uid);
@@ -78,8 +65,7 @@ export default {
         };
     },
     components: {
-        Icon,
-        TextFont20Filled,
+        TitleBar,
     },
     computed: {
         fontButtonColor: function () {
@@ -87,17 +73,9 @@ export default {
         },
     },
     methods: {
-        goAuth: async function () {
-        },
-        font_toggle: function () {
-            let current = localStorage.getItem("font_is_active");
-            if (current == "true") {
-                localStorage.setItem("font_is_active", false);
-                this.font_is_active = false;
-            } else {
-                localStorage.setItem("font_is_active", true);
-                this.font_is_active = true;
-            }
+        goAuth: async function () {},
+        font_toggle: function (value) {
+            this.font_is_active = value;
         },
     },
     async created() {
@@ -117,7 +95,7 @@ export default {
 </script>
 
 
-<style scope>
+<style scoped>
 .hidden {
     display: none;
 }
