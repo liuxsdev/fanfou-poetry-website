@@ -1,5 +1,5 @@
 import axios from "axios";
-import { randomNum } from './util'
+import { random ,random_pick_by_wight} from '@liuxsdev/utils'
 
 
 //随机uid
@@ -7,14 +7,14 @@ function get_random_uid() {
     // 1：全唐诗 57611
     // 2：全宋诗 254247
     // 3：全宋词 21052
-    var random_type = randomNum(1, 3);
+    var random_type = random_pick_by_wight([1, 2, 3], [12, 25, 20])
     switch (random_type) {
         case 1:
-            return `${random_type}${randomNum(1, 57611)}`;
+            return `${random_type}${random(1, 57611)}`;
         case 2:
-            return `${random_type}${randomNum(1, 254247)}`;
+            return `${random_type}${random(1, 254247)}`;
         case 3:
-            return `${random_type}${randomNum(1, 21052)}`;
+            return `${random_type}${random(1, 21052)}`;
         default:
             return "37227";
     }
