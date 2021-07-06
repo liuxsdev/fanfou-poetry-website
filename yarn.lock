@@ -949,10 +949,10 @@
     cssnano-preset-default "^4.0.0"
     postcss "^7.0.0"
 
-"@liuxsdev/utils@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.npmjs.org/@liuxsdev/utils/-/utils-0.1.0.tgz#4249c29b7b03755d3354f49430b284a517f8556a"
-  integrity sha512-yFe9ytoVlqGiStI9dq2Uqp2E40TgWzLg/lWUCHhMKjWT8r9HsXYp1zo93Ago/F0AlaymtGVJykUGagpoevbOtA==
+"@liuxsdev/utils@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.npmjs.org/@liuxsdev/utils/-/utils-0.1.1.tgz#82af97202a8772dc33d6e0b5e2a471bdb6a4b66e"
+  integrity sha512-PDjwmZQwkkwMJUcKg9pFH68xe07xoJLp38hJElC69WjslXgYQvac6o3NA0gCegQJ5kuhmfuD+FjFHIh9KbFw7w==
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
