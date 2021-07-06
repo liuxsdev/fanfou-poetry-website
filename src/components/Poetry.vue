@@ -142,6 +142,12 @@ export default {
 
 #para p {
     margin: 0.8em;
+    cursor: pointer;
+}
+
+#para p:hover {
+    color: red;
+    font-weight: 600;
 }
 
 #header {

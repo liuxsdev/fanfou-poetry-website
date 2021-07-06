@@ -1,7 +1,9 @@
 <template>
     <footer class="footer">
         <span class="author">
-            <a href="https://fanfou.com/%7E5vWI0IgzJHI">@小诗词</a>
+            <a href="https://fanfou.com/%7E5vWI0IgzJHI" target="_blank"
+                >@小诗词</a
+            >
         </span>
         <span>
             | Hosted On
