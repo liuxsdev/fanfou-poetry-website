@@ -1151,6 +1151,11 @@
     anymatch "^3.0.0"
     source-map "^0.6.0"
 
+"@vicons/fa@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.npmjs.org/@vicons/fa/-/fa-0.10.0.tgz#d91d5ca7cecbc7ca25e22f38c6b8340063826e32"
+  integrity sha512-Hcer9JeSsjFoglTG6DDDGljbHR7qkhHd0dYr1jasVVsOlGzdwLn2oi9Zke8RUD7d2WNcwUZx8FFmdUUWwV+9qw==
+
 "@vicons/fluent@^0.10.0":
   version "0.10.0"
   resolved "https://registry.npmjs.org/@vicons/fluent/-/fluent-0.10.0.tgz#b9967841bd8727e9297b17d9e414cd3e2454ae25"
