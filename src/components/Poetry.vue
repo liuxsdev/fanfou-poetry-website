@@ -39,14 +39,13 @@
     </div>
 </template>
 <script>
-import { parse_uid, get_poetry } from "../libs/poetry";
+import { get_poetry_data_by_uid } from "@liuxsdev/poetry";
 import TitleBar from "./TitleBar.vue";
 // ================= functions ===================
 async function set_data(uid, app) {
-    let extra_info = parse_uid(uid);
-    let poetry_data = await get_poetry(extra_info.type_string, extra_info.id);
-    app.poetry_data = poetry_data["data"]["results"][0];
-    app.extra_info = extra_info;
+    let poetry_data = await get_poetry_data_by_uid(uid);
+    app.poetry_data = poetry_data["poetry_data"];
+    app.extra_info = poetry_data["extra"];
     app.loading = false;
 }
 

@@ -2,7 +2,7 @@
     <Poetry :id="random_id" />
 </template>
 <script>
-import { get_random_uid } from "../libs/poetry";
+import { get_random_uid } from "@liuxsdev/poetry";
 import Poetry from "../components/Poetry.vue";
 
 export default {
