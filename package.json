@@ -8,8 +8,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@liuxsdev/poetry": "^0.1.0",
-    "@liuxsdev/utils": "^0.1.1",
+    "@liuxsdev/poetry": "^0.1.2",
+    "@liuxsdev/utils": "^0.1.4",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "fanfou-sdk-browser": "^0.8.0",

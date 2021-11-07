@@ -949,23 +949,18 @@
     cssnano-preset-default "^4.0.0"
     postcss "^7.0.0"
 
-"@liuxsdev/poetry@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.npmjs.org/@liuxsdev/poetry/-/poetry-0.1.0.tgz#7637321a4725119b6198922438149f9e508927b8"
-  integrity sha512-CM6Be3nARBANvujzgapvhCie3G3q71WHwNzUJ6Bwi7Rf5qK6WzYdHo6hRhCrVzDJFVoQZh3H4owpTWFjMtVeYw==
+"@liuxsdev/poetry@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.npmjs.org/@liuxsdev/poetry/-/poetry-0.1.2.tgz#ec0166d6aa6611cad056e5d37f9b1eda6df8706f"
+  integrity sha512-aMJ5dXY7GZJNHRQnCVwFYQ/XJGb+BO6oRFX+4ohLP6Ep60hXcrIKeDLnn7zUIlGOULwxj64X1JPdqse7334aCQ==
   dependencies:
-    "@liuxsdev/utils" "^0.1.2"
+    "@liuxsdev/utils" "0.1.4"
     axios "^0.21.1"
 
-"@liuxsdev/utils@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.npmjs.org/@liuxsdev/utils/-/utils-0.1.1.tgz#82af97202a8772dc33d6e0b5e2a471bdb6a4b66e"
-  integrity sha512-PDjwmZQwkkwMJUcKg9pFH68xe07xoJLp38hJElC69WjslXgYQvac6o3NA0gCegQJ5kuhmfuD+FjFHIh9KbFw7w==
-
-"@liuxsdev/utils@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.npmjs.org/@liuxsdev/utils/-/utils-0.1.2.tgz#0ed7d51b4da47aef47734dda28a4c40cda4f490d"
-  integrity sha512-CcyKCkk66JKa5zDio2tAjc3w7YCy27lMSdNqXRqXKWhyz7Hx8CVD9xIXXxUZPNbu0wH0V8gO7LNFTfcnV7t7Gw==
+"@liuxsdev/utils@0.1.4", "@liuxsdev/utils@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.npmjs.org/@liuxsdev/utils/-/utils-0.1.4.tgz#56d88668632317343a120a15dddb99e77160c129"
+  integrity sha512-/govbGRMmcEitxP/xrxqNi1DbUXJDb3Et9hFiM7DpN0l9KsFB31+V0G8AGgysXi+m+jV3iBOXI3bDMC1IXrluA==
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
