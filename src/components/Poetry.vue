@@ -161,7 +161,7 @@ export default {
 
 @font-face {
     font-family: FZXJL;
-    src: url("../assets/fonts/FZXJL.TTF");
+    src: url("../assets/fonts/FZXJL.woff2");
 }
 
 .custom_fonts {
