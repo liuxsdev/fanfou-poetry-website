@@ -2,12 +2,7 @@
     <div class="poetry" :class="{ custom_fonts: font_is_active }">
         <p v-show="loading">Loading</p>
         <div id="header">
-            <div
-                class="float hidden"
-                id="btn"
-                v-on:click="goAuth"
-                v-if="!isLogined"
-            >
+            <div class="float hidden" id="btn" v-on:click="goAuth" v-if="!isLogined">
                 登陆
             </div>
             <div class="float" v-if="isLogined">欢迎:{{ username }}</div>
@@ -15,8 +10,7 @@
         </div>
 
         <div id="info" v-show="!loading">
-            {{ extra_info.type }} {{ extra_info.collection }} /
-            {{ poetry_data.author }} /
+            {{ extra_info.type }} {{ extra_info.collection }} / {{ poetry_data.author }} /
             {{ poetry_data.rhythmic || poetry_data.title }}
             /
             {{ extra_info.id }}
@@ -26,9 +20,7 @@
             <p>{{ poetry_data.rhythmic }}</p>
         </div>
         <div id="author">
-            <span id="time" v-show="!loading">{{
-                extra_info.poetry_time
-            }}</span>
+            <span id="time" v-show="!loading">{{ extra_info.poetry_time }}</span>
             <span>{{ poetry_data.author }}</span>
         </div>
         <div id="para">
@@ -43,10 +35,21 @@ import { get_poetry_data_by_uid } from "@liuxsdev/poetry";
 import TitleBar from "./TitleBar.vue";
 // ================= functions ===================
 async function set_data(uid, app) {
-    let poetry_data = await get_poetry_data_by_uid(uid);
-    app.poetry_data = poetry_data["poetry_data"];
-    app.extra_info = poetry_data["extra"];
+    let _poetry_data = await get_poetry_data_by_uid(uid);
+    let poetry_data = _poetry_data["poetry_data"];
+    app.poetry_data = poetry_data;
+    app.extra_info = _poetry_data["extra"];
     app.loading = false;
+    // 访问首页时，将hash值设置为诗词的uid
+    if (location.hash == "#/") {
+        location.hash += uid;
+    }
+    // 设置标题
+    let title_str = poetry_data.title || poetry_data.rhythmic;
+    if (title_str.length > 15) {
+        title_str = title_str.slice(0, 15) + "..";
+    }
+    document.querySelector("title").innerText = title_str;
 }
 
 export default {
@@ -92,7 +95,6 @@ export default {
     },
 };
 </script>
-
 
 <style scoped>
 .hidden {
@@ -145,7 +147,7 @@ export default {
 }
 
 #para p:hover {
-    color: red;
+    color: #ff5722;
     font-weight: 600;
 }
 
