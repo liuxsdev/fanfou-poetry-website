@@ -2,10 +2,6 @@
     <div class="poetry" :class="{ custom_fonts: font_is_active }">
         <p v-show="loading">Loading</p>
         <div id="header">
-            <div class="float hidden" id="btn" v-on:click="goAuth" v-if="!isLogined">
-                登陆
-            </div>
-            <div class="float" v-if="isLogined">欢迎:{{ username }}</div>
             <TitleBar @font_click="font_toggle"></TitleBar>
         </div>
 
@@ -40,6 +36,7 @@ async function set_data(uid, app) {
     app.poetry_data = poetry_data;
     app.extra_info = _poetry_data["extra"];
     app.loading = false;
+
     // 访问首页时，将hash值设置为诗词的uid
     if (location.hash == "#/") {
         location.hash += uid;
@@ -75,13 +72,11 @@ export default {
         },
     },
     methods: {
-        goAuth: async function () {},
         font_toggle: function (value) {
             this.font_is_active = value;
         },
     },
     async created() {
-        // let uid = get_uid();
         set_data(this.id, this);
         this.$watch(
             () => this.$route.params,
@@ -168,5 +163,9 @@ export default {
 
 .custom_fonts {
     font-family: "FZXJL", "汉仪楷体", "楷体", sans-serif;
+}
+
+div#title {
+    margin-top: 1.5em;
 }
 </style>
