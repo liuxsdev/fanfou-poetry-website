@@ -106,24 +106,29 @@ export default {
             const poetry_time = this.extra_info.poetry_time;
             const author = this.poetry_data.author;
             const title = this.poetry_data.rhythmic || this.poetry_data.title;
-            const share_msg = `${selected_para}——﹝${poetry_time}﹞${author}《${title}》`;
-            console.log(share_msg);
-
-            // const oauthToken = localStorage.getItem("oauthToken");
-            // const oauthTokenSecret = localStorage.getItem("oauthTokenSecret");
-            // if (oauthToken && oauthTokenSecret) {
-            //     ff.oauthToken = oauthToken;
-            //     ff.oauthTokenSecret = oauthTokenSecret;
-            // }
-            // const status = await updateStatus(ff, share_msg);
-            // console.log(status);
-            /** TODO
-             * 选择诗句
-             * 组成分享 XXXX  ——﹝宋﹞王之道《西江月》
-             * 弹出窗口
-             * 确认发送
-             *
-             */
+            const website = "https://poetry.liuxs.pro/" + location.hash;
+            const share_msg = `${selected_para}——﹝${poetry_time}﹞${author}《${title}》 ${website}`;
+            if (selected_para.length > 0) {
+                if (localStorage.getItem("isLogined") == "true") {
+                    const r = confirm(`是否发送？\n\n${share_msg}`);
+                    if (r == true) {
+                        console.log("发送");
+                        const oauthToken = localStorage.getItem("oauthToken");
+                        const oauthTokenSecret = localStorage.getItem("oauthTokenSecret");
+                        if (oauthToken && oauthTokenSecret) {
+                            ff.oauthToken = oauthToken;
+                            ff.oauthTokenSecret = oauthTokenSecret;
+                            try {
+                                const status = await updateStatus(ff, share_msg);
+                                console.log(status);
+                                alert("发送成功");
+                            } catch (error) {
+                                alert("发送失败");
+                            }
+                        }
+                    }
+                }
+            }
         },
     },
     async created() {
@@ -198,7 +203,7 @@ export default {
 #header {
     position: absolute;
     float: left;
-    top: 2%;
+    top: 3%;
     right: 2%;
     font-family: sans-serif;
     font-size: 0.8em;
@@ -215,7 +220,7 @@ export default {
 }
 
 div#title {
-    margin-top: 1.5em;
+    margin-top: 4em;
     margin-bottom: 1em;
 }
 
