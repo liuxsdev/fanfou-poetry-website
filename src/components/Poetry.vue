@@ -12,15 +12,26 @@
             {{ extra_info.id }}
         </div>
         <div id="title">
-            <p v-if="!poetry_data.rhythmic">{{ poetry_data.title }}</p>
-            <p>{{ poetry_data.rhythmic }}</p>
+            <div>
+                <span v-if="!poetry_data.rhythmic">{{ poetry_data.title }}</span>
+                <span>{{ poetry_data.rhythmic }}</span>
+                <span class="shareicon">
+                    <Icon color="#32323287" @click="share" size="20" class="share"
+                        ><Share16Regular
+                    /></Icon>
+                </span>
+            </div>
         </div>
         <div id="author">
             <span id="time" v-show="!loading">{{ extra_info.poetry_time }}</span>
             <span>{{ poetry_data.author }}</span>
         </div>
         <div id="para">
-            <p v-for="paragraph in poetry_data.paragraphs" :key="paragraph">
+            <p
+                v-for="paragraph in poetry_data.paragraphs"
+                :key="paragraph"
+                @click="select"
+            >
                 {{ paragraph }}
             </p>
         </div>
@@ -29,6 +40,9 @@
 <script>
 import { get_poetry_data_by_uid } from "@liuxsdev/poetry";
 import TitleBar from "./TitleBar.vue";
+import { Share16Regular } from "@vicons/fluent";
+import { Icon } from "@vicons/utils";
+import { ff, updateStatus } from "../utils/ff.js";
 // ================= functions ===================
 async function set_data(uid, app) {
     let _poetry_data = await get_poetry_data_by_uid(uid);
@@ -59,12 +73,12 @@ export default {
                 localStorage.getItem("font_is_active") == "true" ? true : false,
             poetry_data: {},
             extra_info: {},
-            username: "",
-            isLogined: false,
         };
     },
     components: {
         TitleBar,
+        Share16Regular,
+        Icon,
     },
     computed: {
         fontButtonColor: function () {
@@ -75,13 +89,48 @@ export default {
         font_toggle: function (value) {
             this.font_is_active = value;
         },
+        select: function (event) {
+            const selDOM = event.target;
+            if (selDOM.getAttribute("class") != "sele_para") {
+                selDOM.setAttribute("class", "sele_para");
+            } else {
+                selDOM.setAttribute("class", "");
+            }
+        },
+        share: async function () {
+            const para = document.getElementsByClassName("sele_para");
+            var selected_para = "";
+            for (let i = 0; i < para.length; i++) {
+                selected_para += para[i].innerText;
+            }
+            const poetry_time = this.extra_info.poetry_time;
+            const author = this.poetry_data.author;
+            const title = this.poetry_data.rhythmic || this.poetry_data.title;
+            const share_msg = `${selected_para}——﹝${poetry_time}﹞${author}《${title}》`;
+            console.log(share_msg);
+
+            // const oauthToken = localStorage.getItem("oauthToken");
+            // const oauthTokenSecret = localStorage.getItem("oauthTokenSecret");
+            // if (oauthToken && oauthTokenSecret) {
+            //     ff.oauthToken = oauthToken;
+            //     ff.oauthTokenSecret = oauthTokenSecret;
+            // }
+            // const status = await updateStatus(ff, share_msg);
+            // console.log(status);
+            /** TODO
+             * 选择诗句
+             * 组成分享 XXXX  ——﹝宋﹞王之道《西江月》
+             * 弹出窗口
+             * 确认发送
+             *
+             */
+        },
     },
     async created() {
         set_data(this.id, this);
         this.$watch(
             () => this.$route.params,
             async (toParams) => {
-                // console.log(toParams, pre);
                 if (toParams.id != "") {
                     set_data(toParams.id, this);
                 }
@@ -141,7 +190,7 @@ export default {
     cursor: pointer;
 }
 
-#para p:hover {
+.sele_para {
     color: #ff5722;
     font-weight: 600;
 }
@@ -167,5 +216,15 @@ export default {
 
 div#title {
     margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+
+span.shareicon {
+    margin-left: 0.5em;
+    cursor: pointer;
+}
+span.share svg:hover {
+    color: #ff5722;
+    font-weight: 600;
 }
 </style>

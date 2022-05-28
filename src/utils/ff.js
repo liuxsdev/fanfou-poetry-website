@@ -25,4 +25,9 @@ async function getUserInfo(ff) {
     };
 }
 
-export { ff, getUserInfo };
+async function updateStatus(ff, s) {
+    const status = await ff.post("/statuses/update", { status: s });
+    return status;
+}
+
+export { ff, getUserInfo, updateStatus };

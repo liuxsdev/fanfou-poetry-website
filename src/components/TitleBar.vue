@@ -1,7 +1,7 @@
 <template>
     <div class="title-bar">
         <div class="control">
-            <div class="user hidden">
+            <div class="user">
                 <span v-if="!isLogined">
                     <span @click="goAuth">登录</span>
                 </span>
@@ -45,22 +45,12 @@ import { Github, AngleLeft, AngleRight } from "@vicons/fa";
 import { Icon } from "@vicons/utils";
 import queryString from "query-string";
 import { get_random_uid } from "@liuxsdev/poetry";
-import { ff } from "../utils/ff.js";
+import { ff, getUserInfo } from "../utils/ff.js";
 
 function get_uid_from_href(href) {
     const host = href.split("#/")[0];
     const uid = href.split("#/")[1];
     return `${host}?uid=${uid}`;
-}
-
-async function getUserInfo(ff) {
-    const user = await ff.get("/account/verify_credentials");
-    const name = user["name"];
-    const avatar = user["profile_image_origin_large"];
-    return {
-        name,
-        avatar,
-    };
 }
 
 export default {
@@ -88,7 +78,7 @@ export default {
         },
     },
     async created() {
-        console.log("created");
+        const _this = this;
         // 如果有search参数，说明刚从饭否认证页面返回
         // 设置uid为登录前的uid
         // 存储oauth_token到localStorage
@@ -110,20 +100,16 @@ export default {
             // 跳转到登录前的首页
             const host = location.href.split("?")[0];
             location.replace(host + "#/" + parsed.uid);
-            // location.href = host + "#/" + parsed.uid;
-        } else {
-            const oauthToken = localStorage.getItem("oauthToken");
-            const oauthTokenSecret = localStorage.getItem("oauthTokenSecret");
-            if (oauthToken && oauthTokenSecret) {
-                console.log("已经登录");
-                ff.oauthToken = oauthToken;
-                ff.oauthTokenSecret = oauthTokenSecret;
-                // 可能登录次数太多了
-                // const user = await ff.get("/account/verify_credentials");
-                this.userinfo = await getUserInfo(ff);
-                localStorage.setItem("isLogined", true);
-                // console.log(user);
-            }
+        }
+        const oauthToken = localStorage.getItem("oauthToken");
+        const oauthTokenSecret = localStorage.getItem("oauthTokenSecret");
+        if (oauthToken && oauthTokenSecret) {
+            console.log("已经登录");
+            ff.oauthToken = oauthToken;
+            ff.oauthTokenSecret = oauthTokenSecret;
+            _this.userinfo = await getUserInfo(ff);
+            _this.isLogined = true;
+            localStorage.setItem("isLogined", true);
         }
     },
     methods: {
