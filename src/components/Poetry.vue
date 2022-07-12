@@ -2,14 +2,14 @@
     <div class="poetry" :class="{ custom_fonts: font_is_active }">
         <p v-show="loading">Loading</p>
         <div id="header">
+            <div id="info" v-show="!loading">
+                {{ extra_info.type }} {{ extra_info.collection }} /
+                {{ poetry_data.author }} /
+                {{ poetry_data.rhythmic || poetry_data.title }}
+                /
+                {{ extra_info.id }}
+            </div>
             <TitleBar @font_click="font_toggle"></TitleBar>
-        </div>
-
-        <div id="info" v-show="!loading">
-            {{ extra_info.type }} {{ extra_info.collection }} / {{ poetry_data.author }} /
-            {{ poetry_data.rhythmic || poetry_data.title }}
-            /
-            {{ extra_info.id }}
         </div>
         <div id="title">
             <div>
@@ -156,13 +156,13 @@ export default {
 }
 
 #info {
-    position: absolute;
-    float: left;
-    top: 2%;
-    left: 2%;
     font-family: sans-serif;
-    font-size: 0.5em;
+    font-size: 0.6em;
     color: #9a9a9a;
+    margin-left: 1em;
+    line-height: 44px;
+    flex: 1 0 auto;
+    text-align: left;
 }
 
 #time {
@@ -202,9 +202,12 @@ export default {
 
 #header {
     position: absolute;
-    float: left;
-    top: 3%;
-    right: 2%;
+    top: 2%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
     font-family: sans-serif;
     font-size: 0.8em;
     color: #9a9a9a;

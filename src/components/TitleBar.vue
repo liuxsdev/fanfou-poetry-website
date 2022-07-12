@@ -7,8 +7,8 @@
                 </span>
                 <p v-else>
                     <img class="useravatar" v-bind:src="userinfo.avatar" alt="" />
-                    <span>{{ userinfo.name }}</span>
-                    <span @click="logout">退出</span>
+                    <span class="username">{{ userinfo.name }}</span>
+                    <span class="username" @click="logout">退出</span>
                 </p>
             </div>
 
@@ -111,6 +111,21 @@ export default {
             _this.isLogined = true;
             localStorage.setItem("isLogined", true);
         }
+        // 绑定按键事件
+        document.onkeydown = function (e) {
+            let key = e.code;
+            switch (key) {
+                case "ArrowLeft":
+                    _this.pre();
+                    break;
+                case "ArrowRight":
+                    _this.next();
+                    break;
+                case "KeyR":
+                    _this.random();
+                    break;
+            }
+        };
     },
     methods: {
         font_toggle: function () {
@@ -166,7 +181,7 @@ export default {
 
 span {
     cursor: pointer;
-    margin-right: 0.2em;
+    margin-right: 0.1em;
 }
 
 span a {
@@ -177,7 +192,6 @@ span a {
 div.control {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     padding: 0.5em;
 }
 
@@ -190,5 +204,11 @@ img.useravatar {
 
 div.user p {
     margin: 0;
+    display: flex;
+}
+
+.username {
+    font-size: 0.8em;
+    margin-right: 0.3em;
 }
 </style>
