@@ -1,24 +1,19 @@
 # fanfou-poetry-web
 
 ## Project setup
-```
-yarn install
+
+```bash
+pnpm install
 ```
 
 ### Compiles and hot-reloads for development
-```
-yarn serve
+
+```bash
+pnpm dev
 ```
 
 ### Compiles and minifies for production
-```
-yarn build
-```
 
-### Lints and fixes files
+```bash
+pnpm build
 ```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
