@@ -1,49 +1,40 @@
 <template>
-    <footer class="footer">
-        <span class="author">
-            <a href="https://fanfou.com/%7E5vWI0IgzJHI" target="_blank"
-                >@小诗词</a
-            >
-        </span>
-        <span>
-            | Hosted On
-            <a href="https://vercel.com/" target="_blank">
-                <img src="../assets/vercel-logotype-dark.svg" width="50" />
-            </a>
-        </span>
-        <span>
-            | 诗词整理自
-            <a
-                href="https://github.com/chinese-poetry/chinese-poetry"
-                target="_blank"
-                >chinese-poetry</a
-            >
-        </span>
-        <me />
-    </footer>
+  <footer class="footer text-gray-700 font-sans">
+    <span class="author">
+      <a href="https://fanfou.com/%7E5vWI0IgzJHI" target="_blank">@小诗词</a>
+    </span>
+    <span>
+      | Hosted On
+      <a href="https://vercel.com/" target="_blank">
+        <img class="inline-block w-12" src="../assets/vercel-logotype-dark.svg" />
+      </a>
+    </span>
+    <span>
+      | 诗词整理自
+      <a
+        href="https://github.com/chinese-poetry/chinese-poetry"
+        target="_blank"
+        class="text-orange-400 underline decoration-solid"
+        >Chinese-poetry</a
+      >
+    </span>
+    <me />
+  </footer>
 </template>
 
 <script>
 import Me from "./Me.vue";
 
 export default {
-    name: "Footer",
-    components: {
-        Me,
-    },
+  name: "Footer",
+  components: {
+    Me,
+  },
 };
 </script>
 
 <style scoped>
 .footer {
-    text-align: center;
-    font-family: "Microsoft Yahei";
-    width: 100%;
-    font-size: 0.8em;
-}
-
-a {
-    color: #766686;
-    text-decoration: none;
+  font-size: 0.8em;
 }
 </style>
