@@ -9,21 +9,21 @@
     "tw": "tailwindcss -i ./src/css/main.css -o ./static/css/main.css --watch"
   },
   "dependencies": {
-    "@liuxsdev/poetry": "^0.1.4",
+    "@liuxsdev/poetry": "^0.1.6",
     "axios": "^0.21.4",
     "fanfou-sdk-browser": "^0.8.0",
-    "query-string": "^8.1.0",
-    "vue": "^3.3.4",
-    "vue-router": "^4.2.4"
+    "query-string": "^8.2.0",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0"
   },
   "devDependencies": {
     "@vicons/fa": "^0.10.0",
     "@vicons/fluent": "^0.10.0",
     "@vicons/utils": "^0.1.4",
-    "@vitejs/plugin-vue": "^4.3.3",
-    "autoprefixer": "^10.4.15",
-    "postcss": "^8.4.28",
-    "tailwindcss": "^3.3.3",
-    "vite": "^4.4.9"
+    "@vitejs/plugin-vue": "^4.6.2",
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1",
+    "vite": "^4.5.2"
   }
 }
